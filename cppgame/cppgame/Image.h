@@ -4,7 +4,7 @@
 class Image
 {
 	//The image we will load and show on the screen
-	SDL_Surface* gHelloWorld{};
+	SDL_Surface* imageSurface{};
 
 	//Wether Window Startup was successful
 	bool success;
@@ -12,6 +12,6 @@ public:
 	Image(const char*);
 	~Image();
 	bool wasSuccessful() { return success; }
-	SDL_Surface* getResource() { return gHelloWorld; };
+	SDL_Surface* getResource() { return imageSurface; };
 };
 
