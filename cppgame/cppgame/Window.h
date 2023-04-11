@@ -12,12 +12,8 @@ class Window
 	bool success;
 
 	//Starts up SDL and creates window
-	bool init(int width, int height);
 public:
-	Window(int width, int height) {
-		success = init(width, height);
-	}
-
+	Window(int, int);
 	~Window();
 
 	bool wasSuccessful() { return success; }
