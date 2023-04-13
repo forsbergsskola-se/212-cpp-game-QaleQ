@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "Dot.h"
 #include "Observer.h"
+#include <stdlib.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -58,8 +59,12 @@ int main(int argc, char* args[]) {
                 player.handleEvent(e);
             }
 
-            //Target reached, terminate game loop
-            if (Observer::checkCollision(player, target)) break;
+            //Check if target is reached
+            if (Observer::checkCollision(player, target)) {
+                //Move target 
+                target.mPosX = rand() % (SCREEN_WIDTH - target.DOT_WIDTH);
+                target.mPosY = rand() % (SCREEN_HEIGHT - target.DOT_HEIGHT);
+            }
 
             //Move the dot
             player.move(SCREEN_WIDTH, SCREEN_HEIGHT);
