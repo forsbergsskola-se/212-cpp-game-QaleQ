@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <stdio.h>
 #include "Dot.h"
+#include "Observer.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -38,6 +39,7 @@ int main(int argc, char* args[]) {
         //Initialize the player
         Dot player{ 0, 0 };
 
+        Dot target{ 300, 300 };
 
         //Event handler
         SDL_Event e;
@@ -52,6 +54,9 @@ int main(int argc, char* args[]) {
                 //Handle input for the dot
                 player.handleEvent(e);
             }
+
+            //Target reached, terminate game loop
+            if (Observer::checkCollision(player, target)) break;
 
             //Move the dot
             player.move(SCREEN_WIDTH, SCREEN_HEIGHT);
