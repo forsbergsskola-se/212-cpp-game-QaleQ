@@ -1,86 +1,81 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2022)
-and may not be redistributed without written permission.*/
-
-//Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
-#include "Window.h"
-#include "Image.h"
-#include <map>
-#include <memory>
+#include "Dot.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
-const std::map<SDL_KeyCode, const char*> surfaceMap{
-	{SDLK_UP, "img/up.bmp"},
-	{SDLK_DOWN, "img/down.bmp"},
-	{SDLK_LEFT, "img/left.bmp"},
-	{SDLK_RIGHT, "img/right.bmp"},
-};
+//The window we'll be rendering to
+SDL_Window* gWindow = NULL;
 
-const char* fallbackSurface{ "img/press.bmp" };
+//The window renderer
+SDL_Renderer* gRenderer = NULL;
 
-int main(int argc, char* args[])
-{
-	Window window{ SCREEN_WIDTH, SCREEN_HEIGHT };
+int main(int argc, char* args[]) {
+    //Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+    }
+    else {
+        //Create window
+        gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        if (gWindow == NULL) {
+            printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+        }
+        else {
+            //Create renderer for window
+            gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED);
+            if (gRenderer == NULL) {
+                printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
+            }
+            else {
+                //Initialize renderer color
+                SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	//Start up SDL and create window
-	if (!window.wasSuccessful())
-	{
-		printf("Failed to initialize!\n");
-		return -1;
-	}
+                //Initialize the dot
+                Dot dot;
 
-	//Load media
-	auto image = std::make_unique<Image>(fallbackSurface);
+                //Main loop flag
+                bool quit = false;
 
-	if (!image->wasSuccessful())
-	{
-		printf("Failed to load media!\n");
-		return -1;
-	}
-	
+                //Event handler
+                SDL_Event e;
 
-	//Hack to get window to stay up
-	SDL_Event e; 
-	while (true)
-	{
-		if (SDL_PollEvent(&e)) {
-			switch (e.type)
-			{
-				case SDL_QUIT: {
-					return 0;
-				} break;
-				case SDL_KEYDOWN: {
-					if (auto result = surfaceMap.find((SDL_KeyCode)e.key.keysym.sym); result != surfaceMap.end()) {
-						auto value = *result;
-						auto imageName = value.second;	
-						image = std::make_unique<Image>(imageName);
-						if (!image->wasSuccessful())
-						{
-							printf("Failed to load media!\n");
-							return -1;
-						}
-					}
-					else {
-						image = std::make_unique<Image>(fallbackSurface);
-						if (!image->wasSuccessful())
-						{
-							printf("Failed to load media!\n");
-							return -1;
-						}
-					}
-				} break;
-			}
-		}
+                //While application is running
+                while (!quit) {
+                    //Handle events on queue
+                    while (SDL_PollEvent(&e) != 0) {
+                        //User requests quit
+                        if (e.type == SDL_QUIT) {
+                            quit = true;
+                        }
 
-		//Render image
-		window.render(image.get());
-	}
+                        //Handle input for the dot
+                        dot.handleEvent(e);
+                    }
 
-	
+                    //Move the dot
+                    dot.move(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	return 0;
+                    //Clear screen
+                    SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
+                    SDL_RenderClear(gRenderer);
+
+                    //Render objects
+                    dot.render(gRenderer);
+
+                    //Update screen
+                    SDL_RenderPresent(gRenderer);
+                }
+            }
+        }
+    }
+
+    //Free resources and close SDL
+    SDL_DestroyRenderer(gRenderer);
+    SDL_DestroyWindow(gWindow);
+    SDL_Quit();
+
+    return 0;
 }

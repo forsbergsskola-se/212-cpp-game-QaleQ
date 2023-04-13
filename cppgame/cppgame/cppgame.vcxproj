@@ -168,12 +168,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01_hello_SDL.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Dot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Dot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
