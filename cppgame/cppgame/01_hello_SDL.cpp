@@ -61,6 +61,9 @@ int main(int argc, char* args[]) {
 
             //Check if target is reached
             if (Observer::checkCollision(player, target)) {
+                //Increment score and terminate game loop if MAX_SCORE is reached
+                if (++SCORE == MAX_SCORE) break;
+
                 //Move target 
                 target.mPosX = rand() % (SCREEN_WIDTH - target.DOT_WIDTH);
                 target.mPosY = rand() % (SCREEN_HEIGHT - target.DOT_HEIGHT);
