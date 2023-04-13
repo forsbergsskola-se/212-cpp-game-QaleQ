@@ -13,6 +13,9 @@ SDL_Window* gWindow = nullptr;
 //The window renderer
 SDL_Renderer* gRenderer = nullptr;
 
+int SCORE = 0;
+const int MAX_SCORE = 5;
+
 int main(int argc, char* args[]) {
     //Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
