@@ -47,6 +47,7 @@ int main(int argc, char* args[]) {
             //Handle events on queue
             if (SDL_PollEvent(&e)) {
                 //User requests quit
+                if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) { break; }
 
                 //Handle input for the dot
                 player.handleEvent(e);
