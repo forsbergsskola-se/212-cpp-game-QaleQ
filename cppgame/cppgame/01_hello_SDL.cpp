@@ -34,7 +34,7 @@ int main(int argc, char* args[]) {
         }
         
         //Initialize renderer color
-        SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
+        SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 
         //Initialize the player
         Dot player{ 0, 0 };
@@ -62,7 +62,7 @@ int main(int argc, char* args[]) {
             player.move(SCREEN_WIDTH, SCREEN_HEIGHT);
 
             //Clear screen
-            SDL_SetRenderDrawColor(gRenderer, 0, 0, 0, 0);
+            SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
             SDL_RenderClear(gRenderer);
 
             //Render objects
