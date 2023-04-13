@@ -9,17 +9,15 @@ class Dot {
     //The velocity of the dot
     float mVelX, mVelY;
 
+    //Maximum axis velocity of the dot
     float maxVel;
 public:
     //The dimensions of the dot
     static const int DOT_WIDTH = 20;
     static const int DOT_HEIGHT = 20;
 
-    //Maximum axis velocity of the dot
-    static const int DOT_VEL = 1;
-
     //Initializes the variables
-    Dot();
+    Dot(float, float);
 
     //Takes key presses and adjusts the dot's velocity
     void handleEvent(SDL_Event& e);

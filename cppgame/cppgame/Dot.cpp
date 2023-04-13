@@ -1,10 +1,10 @@
 #include "Dot.h"
 #include <SDL.h>
 
-Dot::Dot() {
+Dot::Dot(float x, float y) {
     //Initialize the offsets
-    mPosX = 0;
-    mPosY = 0;
+    mPosX = x;
+    mPosY = y;
 
     //Initialize the velocity
     mVelX = 0;
@@ -37,6 +37,7 @@ void Dot::handleEvent(SDL_Event& e) {
 }
 
 void Dot::move(int SCREEN_WIDTH, int SCREEN_HEIGHT) {
+       
     //Move the dot left or right
     mPosX += mVelX;
 
