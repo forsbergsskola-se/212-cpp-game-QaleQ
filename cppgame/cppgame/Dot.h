@@ -17,13 +17,13 @@ struct Dot {
     static const int DOT_HEIGHT = 20;
 
     //Initializes the variables
-    Dot(float, float);
+    Dot(const float, const float);
 
     //Takes key presses and adjusts the dot's velocity
-    void handleEvent(SDL_Event& e);
+    void handleEvent(const SDL_Event& e);
 
     //Moves the dot
-    void move(int, int);
+    void move(const int, const int);
 
     //Shows the dot on the screen
     void render(SDL_Renderer*);

@@ -1,6 +1,6 @@
 #include "Observer.h"
 
-bool Observer::checkCollision(Dot& playerDot, Dot& targetDot) {
+bool Observer::checkCollision(const Dot& playerDot, const Dot& targetDot) {
 	float pLeft = playerDot.mPosX;
 	float pRight = playerDot.mPosX + playerDot.DOT_WIDTH;
 	float pTop = playerDot.mPosY;

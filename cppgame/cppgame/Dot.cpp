@@ -13,7 +13,7 @@ Dot::Dot(float x, float y) {
     maxVel = 0.1f;
 }
 
-void Dot::handleEvent(SDL_Event& e) {
+void Dot::handleEvent(const SDL_Event& e) {
     //If a key was pressed
     if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
         //Adjust the velocity
