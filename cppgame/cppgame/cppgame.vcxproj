@@ -167,7 +167,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01_hello_SDL.cpp" />
+    <ClCompile Include="Collec.cpp" />
     <ClCompile Include="Dot.cpp" />
     <ClCompile Include="Observer.cpp" />
   </ItemGroup>

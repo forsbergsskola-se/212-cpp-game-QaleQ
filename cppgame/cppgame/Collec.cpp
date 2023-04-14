@@ -1,3 +1,4 @@
+#define SDL_MAIN_HANDLED
 #include <SDL.h>
 #include <stdio.h>
 #include "Dot.h"
@@ -15,9 +16,8 @@ SDL_Window* gWindow = nullptr;
 SDL_Renderer* gRenderer = nullptr;
 
 int SCORE = 0;
-const int MAX_SCORE = 5;
 
-int main(int argc, char* args[]) {
+int main() {
     //Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
@@ -61,12 +61,16 @@ int main(int argc, char* args[]) {
 
         //Check if target is reached
         if (Observer::checkCollision(player, target)) {
-            //Increment score and terminate game loop if MAX_SCORE is reached
-            if (++SCORE == MAX_SCORE) break;
+            ++SCORE;
 
             //Move target 
-            target.mPosX = rand() % (SCREEN_WIDTH - target.DOT_WIDTH);
-            target.mPosY = rand() % (SCREEN_HEIGHT - target.DOT_HEIGHT);
+            target.mPosX = rand() % (SCREEN_WIDTH - target.dotWidth);
+            target.mPosY = rand() % (SCREEN_HEIGHT - target.dotHeight);
+
+            player.dotHeight *= 1.15;
+            player.dotWidth *= 1.15;
+
+            if (player.dotHeight > SCREEN_HEIGHT || player.dotWidth > SCREEN_WIDTH) break;
         }
 
         //Move the dot
