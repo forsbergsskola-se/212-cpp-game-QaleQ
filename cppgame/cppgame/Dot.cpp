@@ -42,24 +42,31 @@ void Dot::move(int SCREEN_WIDTH, int SCREEN_HEIGHT) {
     mPosX += mVelX;
 
     //If the dot went too far to the left or right
-    if ((mPosX < 0) || (mPosX + DOT_WIDTH > SCREEN_WIDTH)) {
-        //Move back
+    if (mPosX < 0) {
         mPosX -= mVelX;
+        mPosX = 0;
+    }
+    else if (mPosX + dotWidth > SCREEN_WIDTH){
+        mPosX -= mVelX;
+        mPosX = SCREEN_WIDTH - dotWidth;
     }
 
     //Move the dot up or down
     mPosY += mVelY;
 
-    //If the dot went too far up or down
-    if ((mPosY < 0) || (mPosY + DOT_HEIGHT > SCREEN_HEIGHT)) {
-        //Move back
+    if (mPosY < 0) {
         mPosY -= mVelY;
+        mPosY = 0;
+    }
+    else if (mPosY + dotWidth > SCREEN_HEIGHT) {
+        mPosY -= mVelY;
+        mPosY = SCREEN_HEIGHT - dotWidth;
     }
 }
 
 void Dot::render(SDL_Renderer* gRenderer) {
     //Show the dot
-    SDL_Rect dotRect = { mPosX, mPosY, DOT_WIDTH, DOT_HEIGHT };
+    SDL_Rect dotRect = { mPosX, mPosY, dotWidth, dotHeight };
     SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderFillRect(gRenderer, &dotRect);
 }
