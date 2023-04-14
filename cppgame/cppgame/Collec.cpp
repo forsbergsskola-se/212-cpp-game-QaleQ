@@ -6,16 +6,16 @@
 #include <stdlib.h>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH{ 640 };
+const int SCREEN_HEIGHT{ 480 };
 
 //The window we'll be rendering to
-SDL_Window* gWindow = nullptr;
+SDL_Window* gWindow{};
 
 //The window renderer
-SDL_Renderer* gRenderer = nullptr;
+SDL_Renderer* gRenderer{};
 
-int SCORE = 0;
+int SCORE{};
 
 int main() {
     //Initialize SDL

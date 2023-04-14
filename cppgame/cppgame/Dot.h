@@ -13,8 +13,8 @@ struct Dot {
     float maxVel;
 
     //The dimensions of the dot
-    int dotWidth = 20;
-    int dotHeight = 20;
+    int dotWidth{ 20 };
+    int dotHeight{ 20 };
 
     //Initializes the variables
     Dot(const float, const float);
