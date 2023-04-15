@@ -7,10 +7,10 @@ struct Dot {
     float mPosX, mPosY;
 
     //The velocity of the dot
-    float mVelX, mVelY;
+    float mVelX{}, mVelY{};
 
     //Maximum axis velocity of the dot
-    float maxVel;
+    float maxVel{ 0.1f };
 
     //The dimensions of the dot
     int dotWidth{ 20 };

@@ -1,7 +1,10 @@
 #include "Dot.h"
 #include <SDL.h>
 
-Dot::Dot(float x, float y) : mPosX{ x }, mPosY{ y }, mVelX{}, mVelY{}, maxVel{ 0.1f } {}
+Dot::Dot(float x, float y) :
+    mPosX{ x }, 
+    mPosY{ y }
+{}
 
 void Dot::handleEvent(const SDL_Event& e) {
     //If a key was pressed
