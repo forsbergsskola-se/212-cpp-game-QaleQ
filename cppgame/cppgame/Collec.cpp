@@ -3,6 +3,7 @@
 #include "Dot.h"
 #include "Observer.h"
 #include <stdlib.h>
+#include "Player.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH{ 640 };
@@ -40,7 +41,7 @@ int main(int argc, char* argv[]) {
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 
     //Initialize the player
-    Dot player{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
+    Player player{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 
     //Initialize the target
     Dot target{ SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3 };
