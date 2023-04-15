@@ -16,6 +16,7 @@ SDL_Renderer* gRenderer{};
 
 int SCORE{};
 
+
 int main(int argc, char* argv[]) {
     //Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -40,9 +41,10 @@ int main(int argc, char* argv[]) {
     SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0x00);
 
     //Initialize the player
-    Dot player{ 0, 0 };
+    Dot player{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 };
 
-    Dot target{ 300, 300 };
+    //Initialize the target
+    Dot target{ SCREEN_WIDTH / 3, SCREEN_HEIGHT / 3 };
 
     //Event handler
     SDL_Event e;
