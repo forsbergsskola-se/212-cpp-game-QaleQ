@@ -1,7 +1,6 @@
 #include <SDL.h>
 #include <stdio.h>
 #include "Dot.h"
-#include "Observer.h"
 #include <stdlib.h>
 #include "Player.h"
 
