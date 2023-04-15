@@ -27,4 +27,7 @@ struct Dot {
 
     //Shows the dot on the screen
     void render(SDL_Renderer*);
+
+    //Check collision with target
+    bool checkCollision(const Dot&);
 };

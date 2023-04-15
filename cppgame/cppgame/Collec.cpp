@@ -16,7 +16,6 @@ SDL_Renderer* gRenderer{};
 
 int SCORE{};
 
-
 int main(int argc, char* argv[]) {
     //Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -61,10 +60,10 @@ int main(int argc, char* argv[]) {
         }
 
         //Check if target is reached
-        if (Observer::checkCollision(player, target)) {
+        if (player.checkCollision(target)) {
             ++SCORE;
 
-            //Move target 
+            //Move target
             target.mPosX = rand() % (SCREEN_WIDTH - target.dotWidth);
             target.mPosY = rand() % (SCREEN_HEIGHT - target.dotHeight);
 
