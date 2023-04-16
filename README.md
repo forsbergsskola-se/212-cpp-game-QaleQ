@@ -6,7 +6,7 @@ Collec is a small SDL project made for a school assignment where you use the arr
 
 The aim of the game is to pick up squares to grow larger until you eventually are too big to fully render in the confines on the window you're playing in.
 
-Project implements a Game Loop Design Pattern, as the assignment required it.
+The project implements a Game Loop Design Pattern, to allow for a similar experience independent of the which computer is running the application.
 
 ### Screenshots
 
