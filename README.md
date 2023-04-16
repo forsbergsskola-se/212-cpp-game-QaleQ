@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/xhZBU6iz)
 
-# Collect
+# Collec
 
 Collec is a small SDL project made for a school assignment where you use the arrow keys to control a small square.
 
