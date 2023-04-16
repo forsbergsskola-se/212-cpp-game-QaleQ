@@ -53,7 +53,13 @@ int main(int argc, char* argv[]) {
         //Handle events on queue
         while (SDL_PollEvent(&e)) {
             //User requests quit
-            if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) { break; }
+            if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE) {
+                //Free resources and close SDL
+                SDL_DestroyRenderer(gRenderer);
+                SDL_DestroyWindow(gWindow);
+                SDL_Quit();
+                return 0;
+            }
 
             //Handle input for the dot
             player.handleEvent(e);
