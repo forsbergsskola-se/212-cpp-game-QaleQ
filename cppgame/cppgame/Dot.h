@@ -19,13 +19,6 @@ struct Dot {
     //Initializes the variables
     Dot(const float, const float);
 
-    //Takes key presses and adjusts the dot's velocity
-    void handleEvent(const SDL_Event& e);
-
-    //Moves the dot
-    void move(const int, const int);
-
     //Shows the dot on the screen
     void render(SDL_Renderer*);
-
 };

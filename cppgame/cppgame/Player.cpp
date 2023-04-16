@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 bool Player::checkCollision(const Dot& targetDot) {
     float pLeft{ mPosX };
     float pRight{ mPosX + dotWidth };
@@ -13,4 +12,55 @@ bool Player::checkCollision(const Dot& targetDot) {
 
     if (pRight > tLeft && pLeft < tRight && pBottom > tTop && pTop < tBottom) return true;
     return false;
+}
+
+void Player::handleEvent(const SDL_Event& e) {
+    //If a key was pressed
+    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
+        //Adjust the velocity
+        switch (e.key.keysym.sym) {
+        case SDLK_UP: mVelY -= maxVel; break;
+        case SDLK_DOWN: mVelY += maxVel; break;
+        case SDLK_LEFT: mVelX -= maxVel; break;
+        case SDLK_RIGHT: mVelX += maxVel; break;
+        }
+    }
+    //If a key was released
+    else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
+        //Adjust the velocity
+        switch (e.key.keysym.sym) {
+        case SDLK_UP: mVelY += maxVel; break;
+        case SDLK_DOWN: mVelY -= maxVel; break;
+        case SDLK_LEFT: mVelX += maxVel; break;
+        case SDLK_RIGHT: mVelX -= maxVel; break;
+        }
+    }
+}
+
+void Player::move(int SCREEN_WIDTH, int SCREEN_HEIGHT) {
+
+    //Move the dot left or right
+    mPosX += mVelX;
+
+    //If the dot went too far to the left or right
+    if (mPosX < 0) {
+        mPosX -= mVelX;
+        mPosX = 0;
+    }
+    else if (mPosX + dotWidth > SCREEN_WIDTH) {
+        mPosX -= mVelX;
+        mPosX = SCREEN_WIDTH - dotWidth;
+    }
+
+    //Move the dot up or down
+    mPosY += mVelY;
+
+    if (mPosY < 0) {
+        mPosY -= mVelY;
+        mPosY = 0;
+    }
+    else if (mPosY + dotWidth > SCREEN_HEIGHT) {
+        mPosY -= mVelY;
+        mPosY = SCREEN_HEIGHT - dotWidth;
+    }
 }
