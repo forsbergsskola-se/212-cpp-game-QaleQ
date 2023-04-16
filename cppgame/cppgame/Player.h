@@ -14,8 +14,6 @@ struct Player : public Dot
 	//Check collision with target
 	bool checkCollision(const Dot&);
 
-	void update();
-
 	//Moves the dot
 	void move(const int, const int);
 };
