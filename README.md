@@ -1,12 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/xhZBU6iz)
 
-# Collect
+# Collec
 
 Collec is a small SDL project made for a school assignment where you use the arrow keys to control a small square.
 
 The aim of the game is to pick up squares to grow larger until you eventually are too big to fully render in the confines on the window you're playing in.
 
-Project implements a Game Loop Design Pattern, as the assignment required it.
+The project implements a Game Loop Design Pattern, to allow for a similar experience independent of the which computer is running the application.
 
 ### Screenshots
 
